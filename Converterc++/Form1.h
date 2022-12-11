@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 namespace CppCLRWinformsProjekt {
 
@@ -47,8 +48,9 @@ namespace CppCLRWinformsProjekt {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
+
 	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Label^ label4;
 
 	private:
 		/// <summary>
@@ -69,8 +71,8 @@ namespace CppCLRWinformsProjekt {
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -138,13 +140,6 @@ namespace CppCLRWinformsProjekt {
 			this->textBox1->Size = System::Drawing::Size(192, 20);
 			this->textBox1->TabIndex = 5;
 			// 
-			// textBox2
-			// 
-			this->textBox2->Location = System::Drawing::Point(349, 166);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(192, 20);
-			this->textBox2->TabIndex = 6;
-			// 
 			// button2
 			// 
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -155,14 +150,24 @@ namespace CppCLRWinformsProjekt {
 			this->button2->TabIndex = 7;
 			this->button2->Text = L"Конвертировать";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &Form1::button2_Click);
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(346, 177);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(35, 13);
+			this->label4->TabIndex = 8;
+			this->label4->Text = L"label4";
 			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(570, 327);
+			this->Controls->Add(this->label4);
 			this->Controls->Add(this->button2);
-			this->Controls->Add(this->textBox2);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label3);
@@ -176,15 +181,30 @@ namespace CppCLRWinformsProjekt {
 
 		}
 #pragma endregion
+		
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		WebClient^ wb = gcnew WebClient();
 		String^ line = wb->DownloadString("https://cbr.ru/scripts/XML_daily.asp?");//ссылка на сайт, откуда будет читаться курс
-		Regex^ regex = gcnew Regex("<CharCode>"+comboBox1->Text+"</CharCode><Nominal>(.*?)</Nominal><Name>(.*?)</Name><Value>(.*?)</Value>");//Шаблон для поиска курса, регулярное выражение
+		Regex^ regex = gcnew Regex("<CharCode>" + comboBox1->Text + "</CharCode><Nominal>(.*?)</Nominal><Name>(.*?)</Name><Value>(.*?)</Value>");//Шаблон для поиска курса, регулярное выражение
 		Match^ match = regex->Match(line);//ищем совпадение по шаблону и записываем
 		label3->Text = match->Groups[1]->Value+ " " + comboBox1->Text+ " =  " + match->Groups[3]->Value+" Rub";
 
 	}
 
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+	WebClient^ wb = gcnew WebClient();
+	String^ line = wb->DownloadString("https://cbr.ru/scripts/XML_daily.asp?");//ссылка на сайт, откуда будет читаться курс
+	Regex^ regex = gcnew Regex("<CharCode>" + comboBox1->Text + "</CharCode><Nominal>(.*?)</Nominal><Name>(.*?)</Name><Value>(.*?)</Value>");//Шаблон для поиска курса, регулярное выражение
+	Match^ match = regex->Match(line);//ищем совпадение по шаблону и записываем
+	String^ f = match->Groups[3]->Value;
+	double kurs = double::Parse(f);
+
+	String^ d = textBox1->Text;
+	double sum= double::Parse(d);
+	double res = kurs * sum;
+	String^ result = res.ToString();
+	label4->Text = result;
+}
 };
 	
 
