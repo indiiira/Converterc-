@@ -73,7 +73,7 @@ namespace CppCLRWinformsProjekt {
 			this->label1->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label1->Location = System::Drawing::Point(100, 98);
+			this->label1->Location = System::Drawing::Point(27, 101);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(316, 30);
 			this->label1->TabIndex = 0;
@@ -95,6 +95,7 @@ namespace CppCLRWinformsProjekt {
 			this->comboBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(5) { L"BYN", L"EUR", L"KZT", L"KPW", L"USD" });
 			this->comboBox1->Location = System::Drawing::Point(176, 55);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(170, 24);
@@ -144,9 +145,9 @@ namespace CppCLRWinformsProjekt {
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 		WebClient^ wb = gcnew WebClient();
 		String^ line = wb->DownloadString("https://cbr.ru/scripts/XML_daily.asp?");//ссылка на сайт, откуда будет читаться курс
-		Regex^ regex = gcnew Regex("<CharCode>"+comboBox1->Text+"< / CharCode> <Nominal>(.*?) < / Nominal > <Name>(.*?)< / Name> < Value>(.*?) < / Value > ");//Шаблон для поиска курса, регулярное выражение
+		Regex^ regex = gcnew Regex("<CharCode>"+comboBox1->Text+"</CharCode><Nominal>(.*?)</Nominal><Name>(.*?)</Name><Value>(.*?)</Value>");//Шаблон для поиска курса, регулярное выражение
 		Match^ match = regex->Match(line);//ищем совпадение по шаблону и записываем
-		label2->Text=
+		label3->Text = match->Groups[1]->Value+ " " + comboBox1->Text+ " =  " + match->Groups[3]->Value+" Rub";
 
 	}
 
