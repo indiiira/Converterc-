@@ -46,6 +46,9 @@ namespace CppCLRWinformsProjekt {
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::TextBox^ textBox2;
+	private: System::Windows::Forms::Button^ button2;
 
 	private:
 		/// <summary>
@@ -65,17 +68,20 @@ namespace CppCLRWinformsProjekt {
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Mongolian Baiti", 21.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->label1->Location = System::Drawing::Point(27, 101);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(316, 30);
+			this->label1->Size = System::Drawing::Size(294, 30);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Введите сумму в рублях";
 			// 
@@ -107,7 +113,7 @@ namespace CppCLRWinformsProjekt {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 15.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label3->Location = System::Drawing::Point(36, 197);
+			this->label3->Location = System::Drawing::Point(54, 166);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(60, 28);
 			this->label3->TabIndex = 3;
@@ -117,19 +123,47 @@ namespace CppCLRWinformsProjekt {
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button1->Location = System::Drawing::Point(32, 253);
+			this->button1->Location = System::Drawing::Point(32, 242);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(337, 62);
+			this->button1->Size = System::Drawing::Size(257, 62);
 			this->button1->TabIndex = 4;
 			this->button1->Text = L"Узнать курс";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &Form1::button1_Click);
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(349, 111);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(192, 20);
+			this->textBox1->TabIndex = 5;
+			// 
+			// textBox2
+			// 
+			this->textBox2->Location = System::Drawing::Point(349, 166);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(192, 20);
+			this->textBox2->TabIndex = 6;
+			// 
+			// button2
+			// 
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->button2->Location = System::Drawing::Point(334, 242);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(207, 62);
+			this->button2->TabIndex = 7;
+			this->button2->Text = L"Конвертировать";
+			this->button2->UseVisualStyleBackColor = true;
 			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(570, 327);
+			this->Controls->Add(this->button2);
+			this->Controls->Add(this->textBox2);
+			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->comboBox1);
