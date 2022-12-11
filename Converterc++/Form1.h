@@ -8,7 +8,7 @@ namespace CppCLRWinformsProjekt {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-	using namespace System::Net;//для создания веб клиента
+	using namespace System::Net;//для создания веб клиента 
 	using namespace System::Text::RegularExpressions;
 
 
@@ -142,6 +142,11 @@ namespace CppCLRWinformsProjekt {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		WebClient^ wb = gcnew WebClient();
+		String^ line = wb->DownloadString("https://cbr.ru/scripts/XML_daily.asp?");//ссылка на сайт, откуда будет читаться курс
+		Regex^ regex = gcnew Regex("<CharCode>"+comboBox1->Text+"< / CharCode> <Nominal>(.*?) < / Nominal > <Name>(.*?)< / Name> < Value>(.*?) < / Value > ");//Шаблон для поиска курса, регулярное выражение
+		Match^ match = regex->Match(line);//ищем совпадение по шаблону и записываем
+		label2->Text=
 
 	}
 
