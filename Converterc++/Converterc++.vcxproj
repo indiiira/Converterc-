@@ -148,8 +148,6 @@
     </ClInclude>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="ValueConverter.h" />
-    <ClInclude Include="WebManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -163,6 +161,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\..\Downloads\3741756-bussiness-ecommerce-marketplace-onlinestore-store-user_108907.ico" />
     <Image Include="app.ico" />
   </ItemGroup>
   <ItemGroup>

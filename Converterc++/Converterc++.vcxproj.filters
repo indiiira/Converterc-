@@ -29,12 +29,6 @@
     <ClInclude Include="Form1.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="ValueConverter.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="WebManager.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CppCLR_WinformsProjekt.cpp">
@@ -52,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="app.ico">
+      <Filter>Ressourcendateien</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Downloads\3741756-bussiness-ecommerce-marketplace-onlinestore-store-user_108907.ico">
       <Filter>Ressourcendateien</Filter>
     </Image>
   </ItemGroup>
